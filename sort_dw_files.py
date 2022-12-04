@@ -27,8 +27,7 @@ Doc_folder = "DOCS"
 ppt_folder = "PPT"
 text_folder = "TEXT"
 
-no_pdf = 0
-no_text = 0
+no_counter = 0
 ########################################### FUNCTIONS ###########################################
 def generate_new_folder(sort_based_on):
     path = os.path.join(download_dir + "/", sort_based_on)
@@ -47,16 +46,13 @@ def cut_files(sort_based_on):
 
 
 
-def count_files(sort_based_on, ending_with, counter1):
+def count_files(sort_based_on, counter1):
     path = os.path.join(download_dir + "/", sort_based_on)
     list_folder_dir = os.listdir(path)
     for filename in list_folder_dir:
-        if filename.endswith(ending_with):
-            global no_pdf
-            global no_text
-
-            counter1 = counter1 + 1
-            no_pdf = counter1
+        global counter1_value
+        counter1 = counter1 + 1
+        counter1_value = counter1
 
     
 ################################################################################################
@@ -104,26 +100,26 @@ for filename in list_download_dir:
         cut_files(text_folder)
         
 
+count_files(vid_folder, no_counter)
+print(vid_folder + ": " + str(counter1_value))
+
+count_files(Pic_folder, no_counter)
+print(Pic_folder + ": " + str(counter1_value))
+
+count_files(Pdf_folder, no_counter)
+print(Pdf_folder + ": " + str(counter1_value))
+
+count_files(Zip_folder, no_counter)
+print(Zip_folder + ": " + str(counter1_value))
+
+count_files(Doc_folder, no_counter)
+print(Doc_folder + ": " + str(counter1_value))
+
+count_files(ppt_folder, no_counter)
+print(ppt_folder + ": " + str(counter1_value))
+
+count_files(text_folder, no_counter)
+print(text_folder + ": " + str(counter1_value))
 
 
-count_files(Pdf_folder, sort_pdf, no_pdf)
-print(no_pdf)
 
-
-
-
-
-
-"""
-root = Tk()
-
-#creating a label widget
-myLabel = Label(root, text="Hello world!")
-
-#reflecting it onto the screen
-myLabel.pack()
-
-root.mainloop()
-
-#print(list_download_dir)
-"""
